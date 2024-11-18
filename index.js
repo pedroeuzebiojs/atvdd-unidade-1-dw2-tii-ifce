@@ -1,7 +1,7 @@
 const form = document.querySelector("form");
 const resultWrapper = document.querySelector("#result-wrapper");
 
-const sumValues = (first, second) => {
+const calculateValues = (first, second, operation) => {
   if (!first) {
     alert("É necessário digitar algum valor!");
     return;
@@ -12,11 +12,31 @@ const sumValues = (first, second) => {
     return;
   }
 
-  const sum = first + second;
+  if (!operation) {
+    alert("É necessário escolher a operação!");
+    return;
+  }
+
+  let calculation;
+
+  switch (operation) {
+    case "sum":
+      calculation = first + second;
+      break;
+    case "subtraction":
+      calculation = first - second;
+      break;
+    case "multiplication":
+      calculation = first * second;
+      break;
+    case "division":
+      calculation = first / second;
+      break;
+  }
 
   resultWrapper.innerHTML = `
     <p id="result">
-      A soma entre ${first} e ${second} é igual a: ${sum}.
+      O resultado é igual a: ${calculation}.
     </p>
   `;
 };
@@ -26,8 +46,9 @@ form.addEventListener("submit", (event) => {
 
   const firstValue = Number(document.querySelector("#first-value").value);
   const secondValue = Number(document.querySelector("#second-value").value);
+  const operation = document.querySelector("#operation").value;
 
-  sumValues(firstValue, secondValue);
+  calculateValues(firstValue, secondValue, operation);
 
   form.reset();
 });
