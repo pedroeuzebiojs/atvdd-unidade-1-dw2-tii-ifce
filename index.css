@@ -67,7 +67,8 @@ form .input-wrapper {
   gap: 0.8rem;
 }
 
-form input {
+form input,
+form select {
   background: var(--secondary);
   border: none;
   outline: none;
