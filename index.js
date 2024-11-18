@@ -36,7 +36,7 @@ const calculateValues = (first, second, operation) => {
 
   resultWrapper.innerHTML = `
     <p id="result">
-      O resultado é igual a: ${calculation}.
+      O resultado é igual a: ${calculation.toFixed(2)}
     </p>
   `;
 };
